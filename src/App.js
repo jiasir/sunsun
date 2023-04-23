@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 function App() {
     return (
-        <div className="bg-light">
+        <div className="bg-light d-flex flex-column min-vh-100">
             <Header/>
             <Main/>
             <Footer/>
