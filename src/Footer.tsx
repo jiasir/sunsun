@@ -1,6 +1,7 @@
+import React from "react";
 import {Link} from "react-router-dom";
 
-function Footer() {
+function Footer(): JSX.Element {
     return (
         <div className="container mt-auto">
             <footer className="py-3 my-4">

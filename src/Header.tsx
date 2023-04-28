@@ -1,6 +1,7 @@
+import React from "react";
 import {Link} from "react-router-dom";
 
-function Header() {
+function Header(): JSX.Element {
     return (
         <div className="container mb-auto">
             <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -11,7 +12,6 @@ function Header() {
                     </svg>
                     <span className="fs-4">Simple header</span>
                 </Link>
-
                 <ul className="nav nav-pills">
                     <li className="nav-item">
                         <Link to="/" className="nav-link active" aria-current="page">

@@ -1,4 +1,6 @@
-function About() {
+import React from "react";
+
+function About(): JSX.Element {
     return (
         <main className="container">
             <div className="px-4 py-5 my-5 text-center">

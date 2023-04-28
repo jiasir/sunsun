@@ -2,20 +2,19 @@ import './App.css';
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Features from "./Features";
 import Pricing from "./Pricing";
 import FAQs from "./FAQs";
 import About from "./About";
+import React from 'react';
 
 
-
-
-function App() {
+function App(): JSX.Element {
     return (
         <BrowserRouter>
             <div className="d-flex flex-column min-vh-100">
-                <Header />
+                <Header/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
                     <Route path="/features" element={<Features/>}/>
@@ -23,7 +22,7 @@ function App() {
                     <Route path="/faqs" element={<FAQs/>}/>
                     <Route path="/about" element={<About/>}/>
                 </Routes>
-                <Footer />
+                <Footer/>
             </div>
         </BrowserRouter>
     );
