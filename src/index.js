@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './index.css';
+// import './index.css'; // DO NOT USE THIS css file, because it affects the font
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
