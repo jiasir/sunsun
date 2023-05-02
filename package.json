@@ -7,6 +7,7 @@
     "@types/react-dom": "^18.2.1",
     "bootstrap": "^5.2.3",
     "cra-template": "1.2.0",
+    "eslint-plugin-react-hooks": "^5.0.0-next-491aec5d6-20230501", // https://github.com/facebook/react/issues/14920
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,7 +26,14 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn" // <--- THIS IS THE NEW RULE
+    }
   },
   "browserslist": {
     "production": [

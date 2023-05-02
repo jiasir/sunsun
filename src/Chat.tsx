@@ -8,24 +8,24 @@ function Chat(): JSX.Element {
     const [messages, setMessages] = useState<{ role: string; content: string; }[]>([]);
     const [input, setInput] = useState('');
 
-    // Send messages to the API gateway, and get the response
-    const sendMessages = async () => {
-        // Send the messages to the API gateway
-        const response = await fetch('http://localhost:3000/v1/chat/completions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messages: messages }),
-        });
-
-        // Get the response from the API gateway
-        const data = await response.json();
-
-        // Set the messages state with the response from the API gateway
-        setMessages(data);
-    };
-
-    // Send the messages to the API gateway when the messages state is changed
+    // Send the messages to the API gateway and get the response from the API gateway
     useEffect(() => {
+        // Define sendMessages function here
+        const sendMessages = async () => {
+            // Send the messages to the API gateway
+            const response = await fetch('http://localhost:3000/v1/chat/completions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: messages }),
+            });
+
+            // Get the response from the API gateway
+            const data = await response.json();
+
+            // Set the messages state with the response from the API gateway
+            setMessages(data);
+        };
+
         sendMessages();
     }, [messages]);
 
