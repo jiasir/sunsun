@@ -29,11 +29,6 @@ function Chat(): JSX.Element {
         sendMessages();
     }, [messages]);
 
-    // Send the messages to the API gateway when the input state is changed
-    useEffect(() => {
-        setMessages([...messages, { role: 'User', content: input }]);
-    }, [input]);
-
     return (
         // Display the chat messages using bootstrap and keep the input field at the bottom of the page
         <div className="container">
@@ -65,11 +60,15 @@ function Chat(): JSX.Element {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                         />
+                        {/* Add button to send message to the api server and the message also displayed in card-body */}
                         <button
                             className="btn btn-outline-secondary"
                             type="button"
                             id="button-send"
-                            onClick={() => setInput('')}
+                            onClick={() => {
+                                setMessages([...messages, { role: 'User', content: input }]);
+                                setInput('');
+                            }}
                         >
                             Send
                         </button>
