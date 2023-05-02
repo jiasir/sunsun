@@ -42,7 +42,6 @@ app.post('/v1/chat/completions', async (req: Request, res: Response) => {
             stop: '\n',
         }, openaiConfig);
 
-        // 获取响应的文本
         // Get the text from the response, and add it to the result array
         const text = openaiResponse.data.choices[0].text;
         result.push({ role: 'AI', content: text });
