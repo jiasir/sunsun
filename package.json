@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/node": "^18.16.3",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
     "bootstrap": "^5.2.3",
     "cra-template": "1.2.0",
-    "eslint-plugin-react-hooks": "^5.0.0-next-491aec5d6-20230501", // https://github.com/facebook/react/issues/14920
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.10.0",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "typescript": "^5.0.4",
     "web-vitals": "^3.3.1"
   },
   "scripts": {
@@ -32,7 +33,7 @@
     ],
     "rules": {
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn" // <--- THIS IS THE NEW RULE
+      "react-hooks/exhaustive-deps": "warn"
     }
   },
   "browserslist": {
