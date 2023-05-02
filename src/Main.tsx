@@ -1,4 +1,5 @@
 import React from 'react';
+import Chat from './Chat';
 
 function Main(): JSX.Element {
     return (
@@ -24,6 +25,7 @@ function Main(): JSX.Element {
                     </div>
                 </div>
             </div>
+            <Chat></Chat>
         </main>
     );
 }
