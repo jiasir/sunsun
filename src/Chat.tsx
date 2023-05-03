@@ -59,6 +59,13 @@ function Chat(): JSX.Element {
                             aria-describedby="button-send"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
+                            // add enter to submit
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    setMessages([...messages, { role: 'User', content: input }]);
+                                    setInput('');
+                                }
+                            }}
                         />
                         {/* Add button to send message to the api server and the message also displayed in card-body */}
                         <button
