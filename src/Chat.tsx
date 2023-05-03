@@ -2,7 +2,7 @@
 // The chat messages from API gateway will be sent to this component
 // The logic using fetch to get data form API gateway
 
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 
 function Chat(): JSX.Element {
     const [messages, setMessages] = useState<{ role: string; content: string; }[]>([]);
@@ -15,8 +15,8 @@ function Chat(): JSX.Element {
             // Send the messages to the API gateway
             const response = await fetch('http://localhost:3000/v1/chat/completions', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: messages }),
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({messages: messages}),
             });
 
             // Get the response from the API gateway
@@ -60,8 +60,11 @@ function Chat(): JSX.Element {
                         onChange={(e) => setInput(e.target.value)}
                         // add enter to submit
                         onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                                setMessages([...messages, { role: 'User', content: input }]);
+                            // Disable empty message to be sent
+                            if (e.key === 'Enter' && input === '') {
+                                e.preventDefault();
+                            } else if (e.key === 'Enter') {
+                                setMessages([...messages, {role: 'User', content: input}]);
                                 setInput('');
                             }
                         }}
@@ -71,8 +74,9 @@ function Chat(): JSX.Element {
                         className="btn btn-outline-secondary"
                         type="button"
                         id="button-send"
+                        disabled={!input} // Disable empty message to be sent
                         onClick={() => {
-                            setMessages([...messages, { role: 'User', content: input }]);
+                            setMessages([...messages, {role: 'User', content: input}]);
                             setInput('');
                         }}
                     >
