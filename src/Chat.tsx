@@ -26,7 +26,7 @@ function Chat(): JSX.Element {
             setMessages(data);
         };
 
-        sendMessages();
+        sendMessages().then(r => console.log(r));
     }, [messages]);
 
     return (
@@ -48,42 +48,40 @@ function Chat(): JSX.Element {
                     ))}
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    <div className="input-group mb-3">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Type your message here..."
-                            aria-label="Type your message here..."
-                            aria-describedby="button-send"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            // add enter to submit
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                    setMessages([...messages, { role: 'User', content: input }]);
-                                    setInput('');
-                                }
-                            }}
-                        />
-                        {/* Add button to send message to the api server and the message also displayed in card-body */}
-                        <button
-                            className="btn btn-outline-secondary"
-                            type="button"
-                            id="button-send"
-                            onClick={() => {
+            <div className="col">
+                <div className="input-group mb-3">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Type your message here..."
+                        aria-label="Type your message here..."
+                        aria-describedby="button-send"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        // add enter to submit
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
                                 setMessages([...messages, { role: 'User', content: input }]);
                                 setInput('');
-                            }}
-                        >
-                            Send
-                        </button>
-                    </div>
+                            }
+                        }}
+                    />
+                    {/* Add button to send message to the api server and the message also displayed in card-body */}
+                    <button
+                        className="btn btn-outline-secondary"
+                        type="button"
+                        id="button-send"
+                        onClick={() => {
+                            setMessages([...messages, { role: 'User', content: input }]);
+                            setInput('');
+                        }}
+                    >
+                        Send
+                    </button>
                 </div>
             </div>
         </div>
     )
-};
+}
 
 export default Chat;
