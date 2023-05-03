@@ -5,6 +5,7 @@
  */
 
 (() => {
+    // eslint-disable-next-line strict
     'use strict'
 
     const storedTheme = localStorage.getItem('theme')
