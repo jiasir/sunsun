@@ -32,7 +32,21 @@ func main() {
 	})
 
 	// Launch Gin instance, and listen on port 8080 with TLS
-	if err := r.RunTLS(":8080", "cert.pem", "key.pem"); err != nil {
+	//if err := r.RunTLS(":8080", "cert.pem", "key.pem"); err != nil {
+	//	log.Fatal(err)
+	//}
+	// Launch Gin instance, and listen on port 8080
+	if err := r.Run(":8080"); err != nil {
 		log.Fatal(err)
 	}
 }
+
+// Caddy example:
+// example.com {
+//   proxy /api localhost:4000 {
+//     transparent
+// }
+//   proxy / localhost:3000 {
+//     transparent
+// }
+//}
