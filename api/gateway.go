@@ -23,11 +23,16 @@ func main() {
 		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
 	}))
 
+	// Add MIME type
+	r.Use(func(c *gin.Context) {
+		c.Header("Content-Type", "application/json")
+	})
+
 	// Define route, proxy OpenAI API
 	r.POST("/v1/chat/completions", func(c *gin.Context) {
 		// extract OpenAI API URL
 		// e.g https://api.openai.com/v1/chat/completions
-		targetUrl, err := url.Parse("https://api.openai.com")
+		targetUrl, err := url.Parse("https://api.openai.com/v1/chat/completions")
 		if err != nil {
 			log.Fatal(err)
 		}
