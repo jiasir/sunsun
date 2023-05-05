@@ -2,7 +2,7 @@
 // The chat messages from API gateway will be sent to this component
 // The logic using fetch to get data form API gateway
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Chat(): JSX.Element {
     const [messages, setMessages] = useState<{ role: string; content: string; }[]>([]);
@@ -10,24 +10,37 @@ function Chat(): JSX.Element {
 
     // Send the messages to the API gateway and get the response from the API gateway
     useEffect(() => {
-        // Define sendMessages function here
-        const sendMessages = async () => {
-            // Send the messages to the API gateway
+        const sendMessages = async (messages: { role: string; content: string; }[]) => {
             const response = await fetch('http://localhost:3000/v1/chat/completions', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({messages: messages}),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    temperature: 0.8,
+                    model: 'gpt-3.5-turbo',
+                    messages }),
             });
-
-            // Get the response from the API gateway
-            const data = await response.json();
-
-            // Set the messages state with the response from the API gateway
-            setMessages(data);
+            try {
+                const data = await response.json();
+                setMessages(data.choices[0].text.split('\n').map((message: string) => ({
+                    role: 'AI',
+                    content: message,
+                })));
+            } catch (error) {
+                console.log(error);
+            }
         };
 
-        sendMessages().then(r => console.log(r));
+        if (messages.length > 0) {
+            sendMessages(messages).then(r => console.log(r));
+        }
     }, [messages]);
+
+    const handleMessageSend = (message: string) => {
+        if (message !== '') {
+            setMessages([...messages, { role: 'User', content: message }]);
+            setInput('');
+        }
+    };
 
     return (
         // Display the chat messages using bootstrap and keep the input field at the bottom of the page
@@ -64,8 +77,7 @@ function Chat(): JSX.Element {
                             if (e.key === 'Enter' && input === '') {
                                 e.preventDefault();
                             } else if (e.key === 'Enter') {
-                                setMessages([...messages, {role: 'User', content: input}]);
-                                setInput('');
+                                handleMessageSend(input);
                             }
                         }}
                     />
@@ -75,17 +87,14 @@ function Chat(): JSX.Element {
                         type="button"
                         id="button-send"
                         disabled={!input} // Disable empty message to be sent
-                        onClick={() => {
-                            setMessages([...messages, {role: 'User', content: input}]);
-                            setInput('');
-                        }}
+                        onClick={() => handleMessageSend(input)}
                     >
                         Send
                     </button>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Chat;
