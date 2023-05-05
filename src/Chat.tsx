@@ -2,42 +2,43 @@
 // The chat messages from API gateway will be sent to this component
 // The logic using fetch to get data form API gateway
 
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 
 function Chat(): JSX.Element {
     const [messages, setMessages] = useState<{ role: string; content: string; }[]>([]);
     const [input, setInput] = useState('');
 
     // Send the messages to the API gateway and get the response from the API gateway
-    useEffect(() => {
-        const sendMessages = async (messages: { role: string; content: string; }[]) => {
-            const response = await fetch('http://localhost:3000/v1/chat/completions', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    temperature: 0.8,
-                    model: 'gpt-3.5-turbo',
-                    messages }),
-            });
-            try {
-                const data = await response.json();
-                setMessages(data.choices[0].text.split('\n').map((message: string) => ({
-                    role: 'AI',
-                    content: message,
-                })));
-            } catch (error) {
-                console.log(error);
-            }
-        };
 
-        if (messages.length > 0) {
-            sendMessages(messages).then(r => console.log(r));
+    const sendMessages = async (messages: { role: string; content: string; }[]) => {
+        const response = await fetch('https://api.sunsun.dev:3000/v1/chat/completions', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                temperature: 0.8,
+                model: 'gpt-3.5-turbo',
+                messages
+            }),
+        });
+        try {
+            const data = await response.json();
+            setMessages(data.choices[0].text.split('\n').map((message: string) => ({
+                role: 'AI',
+                content: message,
+            })));
+        } catch (error) {
+            console.log(error);
         }
-    }, [messages]);
+    };
+
+    if (messages.length > 0) {
+        sendMessages(messages).then(r => console.log(r));
+    }
+
 
     const handleMessageSend = (message: string) => {
         if (message !== '') {
-            setMessages([...messages, { role: 'User', content: message }]);
+            setMessages([...messages, {role: 'User', content: message}]);
             setInput('');
         }
     };
