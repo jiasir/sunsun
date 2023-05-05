@@ -5,10 +5,13 @@
 import React, {useState} from 'react';
 
 function Chat(): JSX.Element {
+    // Set initial state for messages and input
     const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
     const [input, setInput] = useState('');
 
+    // Send message to the API gateway and update the state
     const handleMessageSend = async () => {
+        // Check if the input is not empty, and set the new message object with role User and content from the input
         if (input.trim() !== '') {
             const newMessage = {
                 role: 'User',
@@ -30,12 +33,13 @@ function Chat(): JSX.Element {
                 const data = await response.json();
 
                 // Split the returned message into separate message objects and update the state
-                const newMessages = data.choices[0].text
+                const newMessages = data.choices[0].message
                     .split('\n')
-                    .map((message: string) => ({role: 'AI', content: message}));
+                    .map((message: string) => ({role: 'assistant', content: message}));
 
+                // Update the state
                 setMessages([...messages, ...newMessages]);
-                setInput(''); // 清空输入框
+                setInput(''); // Clear input field
             } catch (error) {
                 console.log(error);
             }
