@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"os"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,6 +15,13 @@ var APIKEY = os.Getenv("OPENAI_API_KEY")
 func main() {
 	// Create Gin instance
 	r := gin.Default()
+
+	// Enable CORS
+	r.Use(cors.New(cors.Config{
+		AllowOrigins: []string{"*"},
+		AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"},
+		AllowHeaders: []string{"Origin", "Content-Length", "Content-Type", "Authorization"},
+	}))
 
 	// Define route, proxy OpenAI API
 	r.POST("/v1/chat/completions", func(c *gin.Context) {
