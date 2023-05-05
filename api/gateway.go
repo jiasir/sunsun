@@ -39,6 +39,11 @@ func main() {
 
 		// Create reverse proxy, and forward request to OpenAI API
 		proxy := httputil.NewSingleHostReverseProxy(targetUrl)
+
+		// Check if OPENAI_API_KEY is set
+		if APIKEY == "" {
+			log.Fatal("OPENAI_API_KEY is not set")
+		}
 		// Set proxy request header, add the key saved in gateway to request header
 		c.Request.Header.Set("Authorization", APIKEY)
 		proxy.ServeHTTP(c.Writer, c.Request)
