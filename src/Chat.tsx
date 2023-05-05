@@ -5,41 +5,40 @@
 import React, {useState} from 'react';
 
 function Chat(): JSX.Element {
-    const [messages, setMessages] = useState<{ role: string; content: string; }[]>([]);
+    const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
     const [input, setInput] = useState('');
 
-    // Send the messages to the API gateway and get the response from the API gateway
+    const handleMessageSend = async () => {
+        if (input.trim() !== '') {
+            const newMessage = {
+                role: 'User',
+                content: input.trim(),
+            };
 
-    const sendMessages = async (messages: { role: string; content: string; }[]) => {
-        const response = await fetch('https://api.sunsun.dev:3000/v1/chat/completions', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                temperature: 0.8,
-                model: 'gpt-3.5-turbo',
-                messages
-            }),
-        });
-        try {
-            const data = await response.json();
-            setMessages(data.choices[0].text.split('\n').map((message: string) => ({
-                role: 'AI',
-                content: message,
-            })));
-        } catch (error) {
-            console.log(error);
-        }
-    };
+            // Send current messages to the API gateway
+            try {
+                const response = await fetch('http://localhost:3000/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        temperature: 0.8,
+                        model: 'gpt-3.5-turbo',
+                        messages: [...messages, newMessage],
+                    }),
+                });
 
-    if (messages.length > 0) {
-        sendMessages(messages).then(r => console.log(r));
-    }
+                const data = await response.json();
 
+                // Split the returned message into separate message objects and update the state
+                const newMessages = data.choices[0].text
+                    .split('\n')
+                    .map((message: string) => ({role: 'AI', content: message}));
 
-    const handleMessageSend = (message: string) => {
-        if (message !== '') {
-            setMessages([...messages, {role: 'User', content: message}]);
-            setInput('');
+                setMessages([...messages, ...newMessages]);
+                setInput(''); // 清空输入框
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
@@ -78,7 +77,7 @@ function Chat(): JSX.Element {
                             if (e.key === 'Enter' && input === '') {
                                 e.preventDefault();
                             } else if (e.key === 'Enter') {
-                                handleMessageSend(input);
+                                handleMessageSend().then(r => r);
                             }
                         }}
                     />
@@ -88,7 +87,7 @@ function Chat(): JSX.Element {
                         type="button"
                         id="button-send"
                         disabled={!input} // Disable empty message to be sent
-                        onClick={() => handleMessageSend(input)}
+                        onClick={handleMessageSend}
                     >
                         Send
                     </button>
