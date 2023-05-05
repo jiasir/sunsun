@@ -1,0 +1,31 @@
+### Test OPENAI API
+POST https://api.openai.com/v1/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{OPENAI_API_KEY}}
+
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ]
+}
+
+
+### Test API Gateawy
+POST {{URL}}:{{PORT}}/v1/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{OPENAI_API_KEY}}
+
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ]
+}
+
