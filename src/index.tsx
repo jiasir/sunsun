@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 // @ts-ignore
 import reportWebVitals from './reportWebVitals';
+// Adding bootstrap https://create-react-app.dev/docs/adding-bootstrap/
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
