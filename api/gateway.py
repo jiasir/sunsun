@@ -9,7 +9,6 @@ Example request body:
   "messages": [{"role": "user", "content": "Hello!"}]
 }
 
-
 Example response body:
 {
   "id": "chatcmpl-123",
@@ -28,6 +27,15 @@ Example response body:
     "completion_tokens": 12,
     "total_tokens": 21
   }
+}
+
+Caddy Usage:
+This is a demo for Caddy proxy port 3000 and 4000 with TLS. See: https://caddyserver.com/docs/quick-starts/reverse-proxy
+https://sunsun.dev {
+   reverse_proxy localhost:3000
+}
+https://sunsun.dev/api {
+    reverse_proxy localhost:4000
 }
 """
 
@@ -89,11 +97,3 @@ async def get_chat_completions():
 # Start the Quart server
 if __name__ == '__main__':
     app.run(debug=True, port=4000)
-
-# This is a demo for Caddy proxy port 3000 and 4000 with TLS
-# https://sunsun.dev {
-#    reverse_proxy localhost:3000
-# }
-# https://sunsun.dev/api {
-#     reverse_proxy localhost:4000
-# }
