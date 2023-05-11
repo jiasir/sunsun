@@ -27,3 +27,5 @@ yarn-error.log*
 .vscode
 /api/http-client.private.env.json
 .env
+/api/gw.js
+/api/gateway.log
