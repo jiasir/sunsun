@@ -34,8 +34,21 @@ Example response body:
 from quart import Quart, jsonify, request
 import openai
 import os
+import logging
+from quart.logging import default_handler
 
 app = Quart(__name__)
+
+# Setup logging
+app.logger.removeHandler(default_handler)  # Remove default logging handler
+app.logger.setLevel(logging.DEBUG)
+
+# Add logging handler for writing logs to a file
+file_handler = logging.FileHandler('gateway.log')
+file_handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+app.logger.addHandler(file_handler)
 
 # Set your OpenAI API key
 openai.api_key = os.environ["OPENAI_API_KEY"]
@@ -49,32 +62,38 @@ async def get_chat_completions():
         data = await request.get_json()
 
         # Make a request to OpenAI's chat API
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             model=data['model'],
             messages=data['messages'],
             temperature=data.get('temperature', 0.8),
             top_p=data.get('top_p', 1),
             n=data.get('n', 1),
             stream=data.get('stream', False),
-            stop=data.get('stop', None),
-            max_tokens=data.get('max_tokens', float('inf')),
+            stop=data.get('stop', 'null'),
+            max_tokens=data.get('max_tokens', None),
             presence_penalty=data.get('presence_penalty', 0),
             frequency_penalty=data.get('frequency_penalty', 0),
-            logit_bias=data.get('logit_bias', None),
-            user=data.get('user', None),
+            logit_bias=data.get('logit_bias', {}),
+            user=data.get('user', ''),
         )
 
         # Return the response from OpenAI to the client
         return jsonify(response)
 
-    except KeyError as e:
-        # Return an error response if a required key is missing in the request body
-        return jsonify({'error': f'Required key "{e.args[0]}" is missing in the request body.'}), 400
     except Exception as e:
-        # Return an error response for any other exceptions
+        # Log the exception message and return an error response
+        app.logger.exception('An error occurred while processing the request:')
         return jsonify({'error': str(e)}), 500
 
 
 # Start the Quart server
 if __name__ == '__main__':
-    app.run(debug=True, port=3000)
+    app.run(debug=True, port=4000)
+
+# This is a demo for Caddy proxy port 3000 and 4000 with TLS
+# https://sunsun.dev {
+#    reverse_proxy localhost:3000
+# }
+# https://sunsun.dev/api {
+#     reverse_proxy localhost:4000
+# }
