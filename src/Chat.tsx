@@ -73,30 +73,22 @@ function Chat(): JSX.Element {
         <div className="container">
             <div className="row">
                 <div className="col">
-                    {messages.map((message, index) => (
-                        <div key={index} className="row">
-                            <div className="col">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">{message.role}</h5>
-                                        <p className="card-text">{message.content}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                    {userMessages.map((message, index) => (
-                        <div key={index} className="row">
-                            <div className="col">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h5 className="card-title">{message.role}</h5>
-                                        <p className="card-text">{message.content}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                    <table className="table table-striped">
+                        <tbody>
+                        {messages.map((message, index) => (
+                            <tr key={index}>
+                                <td>{message.role}</td>
+                                <td>{message.content}</td>
+                            </tr>
+                        ))}
+                        {userMessages.map((message, index) => (
+                            <tr key={index}>
+                                <td>{message.role}</td>
+                                <td>{message.content}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div className="col">
@@ -126,11 +118,11 @@ function Chat(): JSX.Element {
                     >
                         {loading ? (
                             <>
-                            <span
-                                className="spinner-border spinner-border-sm"
-                                role="status"
-                                aria-hidden="true"
-                            ></span>
+        <span
+            className="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+        ></span>
                                 <span className="visually-hidden">Loading...</span>
                             </>
                         ) : (
