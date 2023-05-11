@@ -27,6 +27,7 @@ interface ChatCompletion {
 function Chat(): JSX.Element {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleMessageSend = async () => {
         if (input.trim() !== '') {
@@ -34,6 +35,8 @@ function Chat(): JSX.Element {
                 role: 'user',
                 content: input.trim(),
             };
+
+            setLoading(true);
 
             try {
                 const response = await fetch('http://localhost:4000/v1/chat/completions', {
@@ -61,9 +64,10 @@ function Chat(): JSX.Element {
             } catch (error) {
                 console.log(error);
             }
+
+            setLoading(false);
         }
     };
-
     return (
         <div className="container">
             <div className="row">
@@ -93,21 +97,32 @@ function Chat(): JSX.Element {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => {
-                            if (e.key === 'Enter' && input === '') {
+                            if (e.key === "Enter" && input === "") {
                                 e.preventDefault();
-                            } else if (e.key === 'Enter') {
+                            } else if (e.key === "Enter") {
                                 handleMessageSend().then((r) => r);
                             }
                         }}
                     />
                     <button
-                        className="btn btn-outline-secondary"
+                        className="btn btn-primary"
                         type="button"
                         id="button-send"
-                        disabled={!input}
+                        disabled={!input || loading}
                         onClick={handleMessageSend}
                     >
-                        Send
+                        {loading ? (
+                            <>
+            <span
+                className="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+            ></span>
+                                <span className="visually-hidden">Loading...</span>
+                            </>
+                        ) : (
+                            <>Send</>
+                        )}
                     </button>
                 </div>
             </div>
