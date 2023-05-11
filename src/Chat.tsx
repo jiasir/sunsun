@@ -56,8 +56,9 @@ function Chat(): JSX.Element {
                 if (data.choices && data.choices.length > 0) {
                     const newMessages = data.choices[0].message.content
                         .split('\n')
-                        .map((message: string) => ({role: 'assistant', content: message}));
-                    setMessages([...messages, newMessage, ...newMessages]);
+                        .map((message: string) => message.trim())
+                        .filter(Boolean);
+                    setMessages([...messages, newMessage, {role: 'assistant', content: newMessages.join('\n')}]);
                 }
 
                 setInput('');
@@ -73,18 +74,22 @@ function Chat(): JSX.Element {
         <div className="container">
             <div className="row">
                 <div className="col">
-                    <table className="table table-striped">
+                    <table className="table table-striped font-monospace">
                         <tbody>
                         {messages.map((message, index) => (
                             <tr key={index}>
                                 <td>{message.role}</td>
-                                <td>{message.content}</td>
+                                <td>
+                                    <pre className="pre-scrollable">{message.content}</pre>
+                                </td>
                             </tr>
                         ))}
                         {userMessages.map((message, index) => (
                             <tr key={index}>
                                 <td>{message.role}</td>
-                                <td>{message.content}</td>
+                                <td>
+                                    <pre className="pre-scrollable">{message.content}</pre>
+                                </td>
                             </tr>
                         ))}
                         </tbody>
