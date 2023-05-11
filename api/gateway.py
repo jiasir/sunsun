@@ -1,8 +1,41 @@
-from flask import Flask, request, jsonify
+"""
+This code defines a Quart server that acts as a gateway to OpenAI's chat API.
+It receives requests from the client, makes a request to OpenAI's chat API,
+and returns the response from OpenAI to the client.
+
+Example request body:
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [{"role": "user", "content": "Hello!"}]
+}
+
+
+Example response body:
+{
+  "id": "chatcmpl-123",
+  "object": "chat.completion",
+  "created": 1677652288,
+  "choices": [{
+    "index": 0,
+    "message": {
+      "role": "assistant",
+      "content": "\n\nHello there, how may I assist you today?",
+    },
+    "finish_reason": "stop"
+  }],
+  "usage": {
+    "prompt_tokens": 9,
+    "completion_tokens": 12,
+    "total_tokens": 21
+  }
+}
+"""
+
+from quart import Quart, jsonify, request
 import openai
 import os
 
-app = Flask(__name__)
+app = Quart(__name__)
 
 # Set your OpenAI API key
 openai.api_key = os.environ["OPENAI_API_KEY"]
@@ -10,25 +43,25 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 
 # Define a route to handle client requests
 @app.route('/v1/chat/completions', methods=['POST'])
-def get_chat_completions():
+async def get_chat_completions():
     try:
         # Get the request data from the client
-        data = request.get_json()
+        data = await request.get_json()
 
         # Make a request to OpenAI's chat API
         response = openai.Completion.create(
             model=data['model'],
             messages=data['messages'],
-            pemperature=data.get('temperature', 0.8),
-            top_p=data.get('top_p', 1),  # number Optional Defaults to 1
-            n=data.get('n', 1),  # integer Optional Defaults to 1
-            stream=data.get('stream', False),  # boolean Optional Defaults to false
-            stop=data.get('stop', None),  # string or array Optional Defaults to null
-            max_tokens=data.get('max_tokens', float('inf')),  # integer Optional Defaults to inf
-            presence_penalty=data.get('presence_penalty', 0),  # number Optional Defaults to 0
-            frequency_penalty=data.get('frequency_penalty', 0),  # number Optional Defaults to 0
-            logit_bias=data.get('logit_bias', None),  # map Optional Defaults to null
-            user=data.get('user', None),  # string Optional
+            temperature=data.get('temperature', 0.8),
+            top_p=data.get('top_p', 1),
+            n=data.get('n', 1),
+            stream=data.get('stream', False),
+            stop=data.get('stop', None),
+            max_tokens=data.get('max_tokens', float('inf')),
+            presence_penalty=data.get('presence_penalty', 0),
+            frequency_penalty=data.get('frequency_penalty', 0),
+            logit_bias=data.get('logit_bias', None),
+            user=data.get('user', None),
         )
 
         # Return the response from OpenAI to the client
@@ -42,6 +75,6 @@ def get_chat_completions():
         return jsonify({'error': str(e)}), 500
 
 
-# Start the Flask server
+# Start the Quart server
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
