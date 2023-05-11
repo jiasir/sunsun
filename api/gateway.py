@@ -70,20 +70,7 @@ async def get_chat_completions():
         data = await request.get_json()
 
         # Make a request to OpenAI's chat API
-        response = openai.ChatCompletion.create(
-            model=data['model'],
-            messages=data['messages'],
-            temperature=data.get('temperature', 0.8),
-            top_p=data.get('top_p', 1),
-            n=data.get('n', 1),
-            stream=data.get('stream', False),
-            stop=data.get('stop', 'null'),
-            max_tokens=data.get('max_tokens', None),
-            presence_penalty=data.get('presence_penalty', 0),
-            frequency_penalty=data.get('frequency_penalty', 0),
-            logit_bias=data.get('logit_bias', {}),
-            user=data.get('user', ''),
-        )
+        response = openai.ChatCompletion.create(**data)
 
         # Return the response from OpenAI to the client
         return jsonify(response)
