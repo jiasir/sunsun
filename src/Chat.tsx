@@ -1,26 +1,42 @@
-// This is a Chat component that will be used to display the chat messages
-// The chat messages from API gateway will be sent to this component
-// The logic using fetch to get data form API gateway
-
 import React, {useState} from 'react';
 
+interface Message {
+    role: string;
+    content: string;
+}
+
+interface ChatCompletion {
+    id: string;
+    object: string;
+    created: number;
+    choices: {
+        index: number;
+        message: {
+            role: string;
+            content: string;
+        };
+        finish_reason: string;
+    }[];
+    usage: {
+        prompt_tokens: number;
+        completion_tokens: number;
+        total_tokens: number;
+    };
+}
+
 function Chat(): JSX.Element {
-    // Set initial state for messages and input
-    const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
 
-    // Send message to the API gateway and update the state
     const handleMessageSend = async () => {
-        // Check if the input is not empty, and set the new message object with role User and content from the input
         if (input.trim() !== '') {
-            const newMessage = {
-                role: 'User',
+            const newMessage: Message = {
+                role: 'user',
                 content: input.trim(),
             };
 
-            // Send current messages to the API gateway
             try {
-                const response = await fetch('http://localhost:3000/v1/chat/completions', {
+                const response = await fetch('http://localhost:4000/v1/chat/completions', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
@@ -30,16 +46,14 @@ function Chat(): JSX.Element {
                     }),
                 });
 
-                const data = await response.json();
+                const data: ChatCompletion = await response.json();
 
-                // Split the returned message into separate message objects and update the state
-                const newMessages = data.choices[0].message
+                const newMessages = data.choices[0].message.content
                     .split('\n')
-                    .map((message: string) => ({role: 'assistant', content: message}));
+                    .map((message: string) => ({role: 'Assistant', content: message}));
 
-                // Update the state
                 setMessages([...messages, ...newMessages]);
-                setInput(''); // Clear input field
+                setInput('');
             } catch (error) {
                 console.log(error);
             }
@@ -47,7 +61,6 @@ function Chat(): JSX.Element {
     };
 
     return (
-        // Display the chat messages using bootstrap and keep the input field at the bottom of the page
         <div className="container">
             <div className="row">
                 <div className="col">
@@ -75,22 +88,19 @@ function Chat(): JSX.Element {
                         aria-describedby="button-send"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        // add enter to submit
                         onKeyDown={(e) => {
-                            // Disable empty message to be sent
                             if (e.key === 'Enter' && input === '') {
                                 e.preventDefault();
                             } else if (e.key === 'Enter') {
-                                handleMessageSend().then(r => r);
+                                handleMessageSend().then((r) => r);
                             }
                         }}
                     />
-                    {/* Add button to send message to the api server and the message also displayed in card-body */}
                     <button
                         className="btn btn-outline-secondary"
                         type="button"
                         id="button-send"
-                        disabled={!input} // Disable empty message to be sent
+                        disabled={!input}
                         onClick={handleMessageSend}
                     >
                         Send
