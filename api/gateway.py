@@ -40,12 +40,14 @@ https://sunsun.dev/api {
 """
 
 from quart import Quart, jsonify, request
+from quart_cors import cors
 import openai
 import os
 import logging
 from quart.logging import default_handler
 
 app = Quart(__name__)
+app = cors(app, allow_origin="*")  # Enable CORS for all origins
 
 # Setup logging
 app.logger.removeHandler(default_handler)  # Remove default logging handler
@@ -63,8 +65,16 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 
 
 # Define a route to handle client requests
-@app.route('/v1/chat/completions', methods=['POST'])
+@app.route('/v1/chat/completions', methods=['POST', 'OPTIONS'])
 async def get_chat_completions():
+    if request.method == 'OPTIONS':
+        # Handle CORS preflight request
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        }
+        return '', 204, headers
     try:
         # Get the request data from the client
         data = await request.get_json()
