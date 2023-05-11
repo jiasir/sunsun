@@ -28,6 +28,7 @@ function Chat(): JSX.Element {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
+    const [userMessages, setUserMessages] = useState<Message[]>([]);
 
     const handleMessageSend = async () => {
         if (input.trim() !== '') {
@@ -56,7 +57,7 @@ function Chat(): JSX.Element {
                     const newMessages = data.choices[0].message.content
                         .split('\n')
                         .map((message: string) => ({role: 'assistant', content: message}));
-                    setMessages([...messages, ...newMessages]);
+                    setMessages([...messages, newMessage, ...newMessages]);
                 }
 
                 setInput('');
@@ -73,6 +74,18 @@ function Chat(): JSX.Element {
             <div className="row">
                 <div className="col">
                     {messages.map((message, index) => (
+                        <div key={index} className="row">
+                            <div className="col">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{message.role}</h5>
+                                        <p className="card-text">{message.content}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    {userMessages.map((message, index) => (
                         <div key={index} className="row">
                             <div className="col">
                                 <div className="card">
@@ -113,11 +126,11 @@ function Chat(): JSX.Element {
                     >
                         {loading ? (
                             <>
-            <span
-                className="spinner-border spinner-border-sm"
-                role="status"
-                aria-hidden="true"
-            ></span>
+                            <span
+                                className="spinner-border spinner-border-sm"
+                                role="status"
+                                aria-hidden="true"
+                            ></span>
                                 <span className="visually-hidden">Loading...</span>
                             </>
                         ) : (
