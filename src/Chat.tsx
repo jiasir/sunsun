@@ -48,12 +48,16 @@ function Chat(): JSX.Element {
 
                 const data: ChatCompletion = await response.json();
 
-                const newMessages = data.choices[0].message.content
-                    .split('\n')
-                    .map((message: string) => ({role: 'Assistant', content: message}));
+                // Check if there are empty choices, if not empty choices, add the new messages to the list
+                if (data.choices && data.choices.length > 0) {
+                    const newMessages = data.choices[0].message.content
+                        .split('\n')
+                        .map((message: string) => ({role: 'assistant', content: message}));
+                    setMessages([...messages, ...newMessages]);
+                }
 
-                setMessages([...messages, ...newMessages]);
                 setInput('');
+
             } catch (error) {
                 console.log(error);
             }
