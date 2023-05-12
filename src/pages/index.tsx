@@ -4,19 +4,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 // components takes precedence over default styles. e.g. import './index.css';
 
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css'; // DO NOT USE THIS css file, because it affects the font
-import App from './App';
-// @ts-ignore
+import App from './app';
 import reportWebVitals from './reportWebVitals';
 
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  createRoot(rootElement).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
+export default function Index(): JSX.Element {
+    return (
+        <React.StrictMode>
+            <App/>
+        </React.StrictMode>
+    )
 }
 
 // If you want to start measuring performance in your app, pass a function

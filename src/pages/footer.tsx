@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link"
 
 function Footer(): JSX.Element {
     return (
@@ -7,27 +7,27 @@ function Footer(): JSX.Element {
             <footer className="py-3 my-4">
                 <ul className="nav justify-content-center border-bottom pb-3 mb-3">
                     <li className="nav-item">
-                        <Link to="/" className="nav-link px-2 text-body-secondary" aria-current="page">
+                        <Link href="/" className="nav-link px-2 text-body-secondary" aria-current="page">
                             Home
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/features" className="nav-link px-2 text-body-secondary">
+                        <Link href="/features" className="nav-link px-2 text-body-secondary">
                             Features
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/pricing" className="nav-link px-2 text-body-secondary">
+                        <Link href="/price" className="nav-link px-2 text-body-secondary">
                             Pricing
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/faqs" className="nav-link px-2 text-body-secondary">
+                        <Link href="/faqs" className="nav-link px-2 text-body-secondary">
                             FAQs
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/about" className="nav-link px-2 text-body-secondary">
+                        <Link href="/about" className="nav-link px-2 text-body-secondary">
                             About
                         </Link>
                     </li>

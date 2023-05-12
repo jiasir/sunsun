@@ -30,3 +30,5 @@ yarn-error.log*
 /api/gw.js
 /api/gateway.log
 /api/.venv
+/.next/
+/next-env.d.ts
