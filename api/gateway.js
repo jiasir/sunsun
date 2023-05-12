@@ -4,6 +4,8 @@
 //
 // const app = express();
 // const port = process.env.PORT || 3000;
+
+// const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 //
 // app.use(cors());
 // app.use(express.json());
@@ -28,7 +30,7 @@
 //         }, {
 //             headers: {
 //                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer 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` // replace with your API key
+//                 'Authorization': `Bearer ${OPENAI_API_KEY}` // replace with your API key
 //             }
 //         });
 //
@@ -55,6 +57,8 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 const privateKey = fs.readFileSync('/root/cert/sunsun.dev.key', 'utf8');
 const certificate = fs.readFileSync('/root/cert/sunsun.dev.cer', 'utf8');
@@ -102,7 +106,7 @@ app.post('/v1/chat/completions', async (req, res) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Transfer-Encoding': 'chunked',
-                'Authorization': `Bearer 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` // your API key
+                'Authorization': `Bearer ${OPENAI_API_KEY}` // your API key
             }
         });
 
