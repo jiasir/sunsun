@@ -1,4 +1,4 @@
-### Test OPENAI API
+### chatGPT API
 POST https://api.openai.com/v1/chat/completions
 Content-Type: application/json
 Authorization: Bearer {{OPENAI_API_KEY}}
@@ -14,7 +14,7 @@ Authorization: Bearer {{OPENAI_API_KEY}}
 }
 
 
-### Test API Gateawy
+### sunsun Gateawy
 POST {{URL}}:{{PORT}}/v1/chat/completions
 Content-Type: application/json
 Authorization: Bearer {{OPENAI_API_KEY}}
