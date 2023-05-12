@@ -70,6 +70,13 @@ function Chat(): JSX.Element {
             setLoading(false);
         }
     };
+    const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            await handleMessageSend()
+        }
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -112,13 +119,7 @@ function Chat(): JSX.Element {
                         aria-describedby="button-send"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter" && input === "") {
-                                e.preventDefault();
-                            } else if (e.key === "Enter") {
-                                handleMessageSend().then((r) => r);
-                            }
-                        }}
+                        onKeyDown={handleKeyDown}
                     />
                     <button
                         className="btn btn-primary"
