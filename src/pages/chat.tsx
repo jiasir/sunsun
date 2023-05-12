@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 interface Message {
     role: string;
@@ -76,6 +76,14 @@ function Chat(): JSX.Element {
         }
     };
 
+    const messagesEndRef = useRef(null);
+
+    useEffect(() => {
+        // @ts-ignore
+        messagesEndRef.current.scrollIntoView({behavior: "smooth"})
+    }, [messages]);
+
+
     return (
         <div className="container font-monospace">
             <div className="row justify-content-center">
@@ -85,14 +93,14 @@ function Chat(): JSX.Element {
                             Chat with Assistant
                         </div>
                         <div className="card-body">
-                            <div className="overflow-auto" style={{maxHeight: "300px"}}>
+                            <div className="overflow-auto" style={{maxHeight: "300px"}} ref={messagesEndRef}>
                                 {messages.map((message, index) => (
                                     <div key={index}
                                          className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
                                         <div
                                             className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-light"} ${message.role === "user" ? "text-white" : "text-dark"}`}>
                                             <small>{message.role === "user" ? "You" : "Assistant"}</small>
-                                            <div>{message.content}</div>
+                                            <div ref={messagesEndRef}>{message.content}</div>
                                         </div>
                                     </div>
                                 ))}
