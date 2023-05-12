@@ -109,38 +109,39 @@ function Chat(): JSX.Element {
                     </table>
                 </div>
             </div>
-            <div className="col">
-                <div className="input-group mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Type your message here..."
-                        aria-label="Type your message here..."
-                        aria-describedby="button-send"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                    />
-                    <button
-                        className="btn btn-primary"
-                        type="button"
-                        id="button-send"
-                        disabled={!input || loading}
-                        onClick={handleMessageSend}
-                    >
-                        {loading ? (
-                            <>
-        <span
-            className="spinner-border spinner-border-sm"
-            role="status"
-            aria-hidden="true"
-        ></span>
-                                <span className="visually-hidden">Loading...</span>
-                            </>
-                        ) : (
-                            <>Send</>
-                        )}
-                    </button>
+            <div className="row">
+                <div className="col">
+                    <div className="input-group mb-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Type your message here..."
+                            aria-label="Type your message here..."
+                            aria-describedby="button-send"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <button
+                            className="btn btn-primary"
+                            type="button"
+                            id="button-send"
+                            disabled={!input || loading}
+                            onClick={handleMessageSend}
+                        >
+                            {loading ? (
+                                <>
+        <span className="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true">
+        </span>
+                                    <span className="visually-hidden">Loading...</span>
+                                </>
+                            ) : (
+                                <>Send</>
+                            )}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
