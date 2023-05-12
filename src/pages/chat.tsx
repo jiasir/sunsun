@@ -28,7 +28,6 @@ function Chat(): JSX.Element {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
-    const [userMessages] = useState<Message[]>([]);
 
     const handleMessageSend = async () => {
         if (input.trim() !== '') {
