@@ -74,7 +74,7 @@ function Chat(): JSX.Element {
         <div className="container">
             <div className="row">
                 <div className="col">
-                    <table className="table table-striped font-monospace">
+                    <table className="table table-hover font-monospace">
                         <tbody>
                         {messages.map((message, index) => (
                             <tr key={index}>
