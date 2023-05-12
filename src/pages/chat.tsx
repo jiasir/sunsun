@@ -79,10 +79,10 @@ function Chat(): JSX.Element {
                         {messages.map((message, index) => (
                             <tr key={index}>
                                 <td>{message.role}</td>
-                                <td>
+                                <td className="text-start">
                                     <pre className="pre-scrollable" style={{
                                         whiteSpace: 'pre-wrap',
-                                        wordWrap: 'break-word'
+                                        wordWrap: 'break-word',
                                     }}>{message.content}</pre>
                                 </td>
                             </tr>
@@ -90,10 +90,10 @@ function Chat(): JSX.Element {
                         {userMessages.map((message, index) => (
                             <tr key={index}>
                                 <td>{message.role}</td>
-                                <td>
+                                <td className="text-start">
                                     <pre className="pre-scrollable" style={{
                                         whiteSpace: 'pre-wrap',
-                                        wordWrap: 'break-word'
+                                        wordWrap: 'break-word',
                                     }}>{message.content}</pre>
                                 </td>
                             </tr>
