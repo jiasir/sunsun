@@ -8,11 +8,6 @@ function Header(): JSX.Element {
     useEffect(() => {
         setActiveLink(router.pathname);
     }, [router.pathname]);
-
-    const handleClick = (link: string) => {
-        setActiveLink(link);
-    }
-
     return (
         <div className="container mb-auto">
             <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
