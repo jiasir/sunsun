@@ -16,7 +16,8 @@ function Header(): JSX.Element {
                     <svg className="bi me-2" width="40" height="32">
                         <use xlinkHref="#bootstrap"></use>
                     </svg>
-                    <span className="fs-3 fw-bold text-primary font-monospace">sunsun</span>
+                    <img src="/apple-touch-icon.png" alt="sunsun" width="32" height="32" className={"me-2"}/>
+                    <span className="fs-2 fw-bold text-primary font-monospace">sunsun</span>
                 </Link>
                 <ul className="nav nav-pills">
                     <li className="nav-item">
