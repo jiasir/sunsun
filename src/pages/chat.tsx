@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import Header from "./header";
-import Footer from "./footer";
+
 import 'bootstrap/dist/css/bootstrap.css'
 import Info from "./info";
 
