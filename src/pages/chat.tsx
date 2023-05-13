@@ -85,10 +85,10 @@ function Chat(): JSX.Element {
 
 
     return (
-        <div className="container font-monospace">
+        <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-8 col-lg-6">
-                    <div className="card">
+                    <div className="card font-monospace">
                         <div className="card-header text-center">
                             Chat with Assistant
                         </div>
@@ -98,9 +98,11 @@ function Chat(): JSX.Element {
                                     <div key={index}
                                          className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
                                         <div
-                                            className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-light"} ${message.role === "user" ? "text-white" : "text-dark"}`}>
-                                            <small>{message.role === "user" ? "You" : "Assistant"}</small>
-                                            <div ref={messagesEndRef}>{message.content}</div>
+                                            className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
+                                            <big>{message.role === "user" ? "You:" : "Assistant:"}</big>
+                                            <div ref={messagesEndRef}>
+                                                <pre>{message.content}</pre>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
