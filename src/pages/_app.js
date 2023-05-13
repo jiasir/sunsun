@@ -1,7 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
+import Header from "./header";
+import Footer from "./footer";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({Component, pageProps}) {
     return (
         <>
             <Head>
@@ -14,7 +16,13 @@ function MyApp({ Component, pageProps }) {
                 />
                 <title>sunsun</title>
             </Head>
-            <Component {...pageProps} />
+
+            {/*col responsive global settings*/}
+            <div className="d-flex flex-column min-vh-100">
+                <Header/>
+                <Component {...pageProps} />
+                <Footer/>
+            </div>
         </>
     )
 }

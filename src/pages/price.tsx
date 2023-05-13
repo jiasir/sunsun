@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 function Price(): JSX.Element {
     return (
-        <div className="d-flex flex-column min-vh-100">
-            <Header/>
             <main className="container">
                 <div className="px-4 py-5 my-5 text-center">
                     <img className="d-block mx-auto mb-4" src="logo192.png" alt="" width="192"
@@ -24,8 +22,6 @@ function Price(): JSX.Element {
                     </div>
                 </div>
             </main>
-            <Footer/>
-        </div>
     );
 }
 
