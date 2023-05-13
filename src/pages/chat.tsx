@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import Header from "./header";
 import Footer from "./footer";
 import 'bootstrap/dist/css/bootstrap.css'
+import Info from "./info";
 
 interface Message {
     role: string;
@@ -92,6 +93,7 @@ function Chat(): JSX.Element {
     return (
         <div className="d-flex flex-column min-vh-100">
             <Header/>
+            <Info/>
             <main className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-10">
