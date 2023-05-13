@@ -94,7 +94,7 @@ function Chat(): JSX.Element {
             <Header/>
             <main className="container">
                 <div className="row justify-content-center">
-                    <div className="col-md-8 col-lg-6">
+                    <div className="col-md-10 col-lg-10">
                         <div className="card font-monospace">
                             <div className="card-header text-center">
                                 Chat with Assistant
