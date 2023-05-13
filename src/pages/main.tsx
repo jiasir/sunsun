@@ -25,7 +25,6 @@ function Main(): JSX.Element {
                         </div>
                     </div>
                 </div>
-                <Chat/>
             </main>
     );
 }

@@ -6,6 +6,7 @@ import Features from './features';
 import Faqs from './faqs';
 import About from './about';
 import Price from "./price";
+import Chat from "./chat";
 
 function App(): JSX.Element {
     const router = useRouter();
@@ -15,7 +16,7 @@ function App(): JSX.Element {
         <div className="d-flex flex-column min-vh-100">
             <Header/>
             {router.pathname === '/' && <Main/>}
-            {router.pathname === '/features' && <Features/>}
+            {router.pathname === '/chat' && <Chat/>}
             {router.pathname === '/price' && <Price/>}
             {router.pathname === '/faqs' && <Faqs/>}
             {router.pathname === '/about' && <About/>}

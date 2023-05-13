@@ -1,4 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
+import Header from "./header";
+import Footer from "./footer";
 
 interface Message {
     role: string;
@@ -87,61 +89,65 @@ function Chat(): JSX.Element {
 
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8 col-lg-6">
-                    <div className="card font-monospace">
-                        <div className="card-header text-center">
-                            Chat with Assistant
-                        </div>
-                        <div className="card-body">
-                            <div className="overflow-auto" style={{maxHeight: "300px"}} ref={messagesEndRef}>
-                                {messages.map((message, index) => (
-                                    <div key={index}
-                                         className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
-                                        <div
-                                            className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
-                                            <big>{message.role === "user" ? "You:" : "Assistant:"}</big>
-                                            <div ref={messagesEndRef}>
-                                                <pre>{message.content}</pre>
+        <div className="d-flex flex-column min-vh-100">
+            <Header/>
+            <main className="container">
+                <div className="row justify-content-center">
+                    <div className="col-md-8 col-lg-6">
+                        <div className="card font-monospace">
+                            <div className="card-header text-center">
+                                Chat with Assistant
+                            </div>
+                            <div className="card-body">
+                                <div className="overflow-auto" style={{maxHeight: "300px"}} ref={messagesEndRef}>
+                                    {messages.map((message, index) => (
+                                        <div key={index}
+                                             className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
+                                            <div
+                                                className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
+                                                <big>{message.role === "user" ? "You:" : "Assistant:"}</big>
+                                                <div ref={messagesEndRef}>
+                                                    <pre>{message.content}</pre>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="input-group">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Type your message here..."
-                                    aria-label="Type your message here..."
-                                    aria-describedby="button-send"
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
-                                    onKeyDown={handleKeyDown}
-                                />
-                                <button
-                                    className="btn btn-primary"
-                                    type="button"
-                                    id="button-send"
-                                    disabled={!input || loading}
-                                    onClick={handleMessageSend}
-                                >
-                                    {loading ? (
-                                        <>
+                                    ))}
+                                </div>
+                                <div className="input-group">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Type your message here..."
+                                        aria-label="Type your message here..."
+                                        aria-describedby="button-send"
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        onKeyDown={handleKeyDown}
+                                    />
+                                    <button
+                                        className="btn btn-primary"
+                                        type="button"
+                                        id="button-send"
+                                        disabled={!input || loading}
+                                        onClick={handleMessageSend}
+                                    >
+                                        {loading ? (
+                                            <>
                                             <span className="spinner-border spinner-border-sm me-2" role="status"
                                                   aria-hidden="true"></span>
-                                            <span className="visually-hidden">Loading...</span>
-                                        </>
-                                    ) : (
-                                        <>Send</>
-                                    )}
-                                </button>
+                                                <span className="visually-hidden">Loading...</span>
+                                            </>
+                                        ) : (
+                                            <>Send</>
+                                        )}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
+            <Footer/>
         </div>
     );
 }

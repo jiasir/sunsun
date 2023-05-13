@@ -26,8 +26,8 @@ function Header(): JSX.Element {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link href="/features" className={`nav-link ${activeLink === "/features" ? "active" : ""}`}>
-                            Features
+                        <Link href="/chat" className={`nav-link ${activeLink === "/chat" ? "active" : ""}`}>
+                            Chat
                         </Link>
                     </li>
                     <li className="nav-item">
