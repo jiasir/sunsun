@@ -2,7 +2,6 @@ import {useRouter} from 'next/router';
 import Header from './header';
 import Footer from './footer';
 import Main from './main';
-import Features from './features';
 import Faqs from './faqs';
 import About from './about';
 import Price from "./price";

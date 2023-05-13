@@ -1,5 +1,4 @@
 import React from 'react';
-import Chat from './chat';
 
 function Main(): JSX.Element {
     return (
