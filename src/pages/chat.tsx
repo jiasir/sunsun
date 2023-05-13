@@ -104,10 +104,10 @@ function Chat(): JSX.Element {
                                     {messages.map((message, index) => (
                                         <div key={index}
                                              className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
-                                            <div
+                                            <div ref={messagesEndRef}
                                                 className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
                                                 <big>{message.role === "user" ? "You:" : "Assistant:"}</big>
-                                                <div ref={messagesEndRef}>
+                                                <div>
                                                     <pre>{message.content}</pre>
                                                 </div>
                                             </div>
