@@ -32,7 +32,7 @@ function Footer(): JSX.Element {
                         </Link>
                     </li>
                 </ul>
-                <p className="text-center text-body-secondary">© 2023 Company, Inc</p>
+                <p className="text-center text-body-secondary">© 2023 sunsun.dev</p>
             </footer>
         </div>
     );
