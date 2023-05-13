@@ -16,7 +16,7 @@ function Header(): JSX.Element {
                     <svg className="bi me-2" width="40" height="32">
                         <use xlinkHref="#bootstrap"></use>
                     </svg>
-                    <span className="fs-4">Simple header</span>
+                    <span className="fs-3 fw-bold text-primary font-monospace">sunsun</span>
                 </Link>
                 <ul className="nav nav-pills">
                     <li className="nav-item">
