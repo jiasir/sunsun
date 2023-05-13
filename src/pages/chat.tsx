@@ -79,8 +79,10 @@ function Chat(): JSX.Element {
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        // @ts-ignore
-        messagesEndRef.current.scrollIntoView({behavior: "smooth"})
+        if (messages.length > 0) {
+            // @ts-ignore
+            messagesEndRef.current.scrollIntoView({behavior: 'smooth'});
+        }
     }, [messages]);
 
 
