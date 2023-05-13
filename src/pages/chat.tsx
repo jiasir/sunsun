@@ -100,15 +100,18 @@ function Chat(): JSX.Element {
                                 Chat with Assistant
                             </div>
                             <div className="card-body">
-                                <div className="overflow-auto" style={{maxHeight: "300px"}} ref={messagesEndRef}>
+                                <div className="overflow-auto" style={{maxHeight: "500px"}} ref={messagesEndRef}>
                                     {messages.map((message, index) => (
                                         <div key={index}
                                              className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
                                             <div ref={messagesEndRef}
-                                                className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
+                                                 className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
                                                 <big>{message.role === "user" ? "You:" : "Assistant:"}</big>
                                                 <div>
-                                                    <pre>{message.content}</pre>
+                                                    <pre style={{
+                                                        whiteSpace: "pre-wrap",
+                                                        wordWrap: "break-word"
+                                                    }}>{message.content}</pre>
                                                 </div>
                                             </div>
                                         </div>
