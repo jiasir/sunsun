@@ -6,6 +6,7 @@ import Faqs from './faqs';
 import About from './about';
 import Price from "./price";
 import Chat from "./chat";
+import 'bootstrap/dist/css/bootstrap.css'
 
 function App(): JSX.Element {
     const router = useRouter();

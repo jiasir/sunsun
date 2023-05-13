@@ -1,6 +1,11 @@
 import React from 'react';
 
 function Main(): JSX.Element {
+    function handleClick() {
+        // click this button will change the url to /chat
+        window.location.href = "/chat";
+    }
+
     return (
             <main className="container">
                 <div className="px-4 py-5 my-5 text-center">
@@ -15,8 +20,8 @@ function Main(): JSX.Element {
                             components, and powerful JavaScript plugins.
                         </p>
                         <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <button type="button" className="btn btn-primary btn-lg px-4 gap-3">
-                                Primary button
+                            <button type="button" className="btn btn-primary btn-lg px-4 gap-3" onClick={handleClick}>
+                                Chat Now
                             </button>
                             <button type="button" className="btn btn-outline-secondary btn-lg px-4">
                                 Secondary

@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./header";
 import Footer from "./footer";
+import 'bootstrap/dist/css/bootstrap.css'
 
 function Features(): JSX.Element {
     return (
