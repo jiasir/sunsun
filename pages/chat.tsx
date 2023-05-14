@@ -31,6 +31,7 @@ function Chat(): JSX.Element {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
+    const [gateway] = useState('https://api.sunsun.dev:3000/v1/chat/completions');
 
     const handleMessageSend = async () => {
         if (input.trim() !== '') {
@@ -42,7 +43,7 @@ function Chat(): JSX.Element {
             setLoading(true);
 
             try {
-                const response = await fetch('https://api.sunsun.dev:3000/v1/chat/completions', {
+                const response = await fetch(gateway, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
