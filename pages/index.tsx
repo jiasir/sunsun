@@ -1,8 +1,7 @@
 // Adding bootstrap https://create-react-app.dev/docs/adding-bootstrap/
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles. e.g. import './index.css';
-
 import React from 'react';
 import App from './app';
 import reportWebVitals from './reportWebVitals';

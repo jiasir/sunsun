@@ -1,7 +1,7 @@
-import Document, {Html, Head, Main, NextScript} from 'next/document';
+import Document, {Head, Html, Main, NextScript} from 'next/document';
 
 class MyDocument extends Document {
-    render() {
+    render(): JSX.Element {
         return (
             // When theme.js was enabled, the data-bs-theme is not working anymore
             <Html lang="en" data-bs-theme="dark">
