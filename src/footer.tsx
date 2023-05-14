@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link"
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap-icons/font/bootstrap-icons.css"
+import {MadeWithLove} from "./MadeWithLove";
 
 function Footer(): JSX.Element {
     return (
@@ -36,8 +37,7 @@ function Footer(): JSX.Element {
                 </ul>
                 <div className="text-center text-body-secondary">
                     <p>© 2023 sunsun.dev</p>
-                    <p>Made with <i className="bi bi-heart-fill text-danger"></i> in Beijing, Tokyo &amp; SF</p>
-                    {/*<p>Made with &hearts; in China &amp; Japan</p>*/}
+                    <MadeWithLove/>
                 </div>
             </footer>
         </div>
