@@ -4,7 +4,7 @@ import Main from './main';
 function App(): JSX.Element {
     return (
         <div className="container">
-            <Main/>
+            <Main />
         </div>
     );
 }

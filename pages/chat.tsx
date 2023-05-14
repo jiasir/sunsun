@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import Info from "../src/info";
@@ -44,7 +44,7 @@ function Chat(): JSX.Element {
             try {
                 const response = await fetch('https://api.sunsun.dev:3000/v1/chat/completions', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         temperature: 0.8,
                         model: 'gpt-3.5-turbo',
@@ -60,7 +60,7 @@ function Chat(): JSX.Element {
                         .split('\n')
                         .map((message: string) => message.trim())
                         .filter(Boolean);
-                    setMessages([...messages, newMessage, {role: 'assistant', content: newMessages.join('\n')}]);
+                    setMessages([...messages, newMessage, { role: 'assistant', content: newMessages.join('\n') }]);
                 }
 
                 setInput('');
@@ -84,14 +84,14 @@ function Chat(): JSX.Element {
     useEffect(() => {
         if (messages.length > 0) {
             // @ts-ignore
-            messagesEndRef.current.scrollIntoView({behavior: 'smooth'});
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [messages]);
 
 
     return (
         <main className="container">
-            <Info/>
+            <Info />
             <div className="row justify-content-center">
                 <div className="col-md-10 col-lg-10">
                     <div className="card font-monospace">
@@ -99,18 +99,18 @@ function Chat(): JSX.Element {
                             Chat with Assistant
                         </div>
                         <div className="card-body">
-                            <div className="overflow-auto" style={{maxHeight: "500px"}} ref={messagesEndRef}>
+                            <div className="overflow-auto" style={{ maxHeight: "500px" }} ref={messagesEndRef}>
                                 {messages.map((message, index) => (
                                     <div key={index}
-                                         className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
+                                        className={`d-flex justify-content-${message.role === "user" ? "end" : "start"} mb-3`}>
                                         <div ref={messagesEndRef}
-                                             className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
+                                            className={`rounded-3 px-3 py-2 ${message.role === "user" ? "bg-primary text-white" : "bg-secondary text-white"}`}>
                                             <big>{message.role === "user" ? "You:" : "Assistant:"}</big>
                                             <div>
-                                                    <pre style={{
-                                                        whiteSpace: "pre-wrap",
-                                                        wordWrap: "break-word"
-                                                    }}>{message.content}</pre>
+                                                <pre style={{
+                                                    whiteSpace: "pre-wrap",
+                                                    wordWrap: "break-word"
+                                                }}>{message.content}</pre>
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@ function Chat(): JSX.Element {
                                     {loading ? (
                                         <>
                                             <span className="spinner-border spinner-border-sm me-2" role="status"
-                                                  aria-hidden="true"></span>
+                                                aria-hidden="true"></span>
                                             <span className="visually-hidden">Loading...</span>
                                         </>
                                     ) : (
