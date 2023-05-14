@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 
 import 'bootstrap/dist/css/bootstrap.css'
-import Info from "./info";
+import Info from "../src/info";
 
 interface Message {
     role: string;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Header from "./header";
-import Footer from "./footer";
+import Header from "../src/header";
+import Footer from "../src/footer";
 
 class MyApp extends React.Component<{ Component: any, pageProps: any }> {
     render(): JSX.Element {

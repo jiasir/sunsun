@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // components takes precedence over default styles. e.g. import './index.css';
 import React from 'react';
 import App from './app';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from '../src/reportWebVitals';
 
 export default function Index(): JSX.Element {
     return (

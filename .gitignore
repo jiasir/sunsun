@@ -31,6 +31,6 @@ yarn-error.log*
 /src/api/gateway.log
 /src/api/.venv
 /.next/
-/src/gateway/.venv/
-/src/gateway/gateway.log
-/src/gateway/http-client.private.env.json
+/gateway/.venv/
+/gateway/gateway.log
+/gateway/http-client.private.env.json
