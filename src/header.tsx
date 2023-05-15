@@ -69,7 +69,6 @@ function Header(): JSX.Element {
             </Link>
           </li>
         </ul>
-            <LanguageSwitcher />
       </header>
     </div>
   );
