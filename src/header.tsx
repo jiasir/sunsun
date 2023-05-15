@@ -27,7 +27,7 @@ function Header(): JSX.Element {
             height="32"
             className={"me-2"}
           />
-          <span className="fs-2 fw-bold font-monospace">sunsun</span>
+          <span className="fs-3 font-monospace">sunsun</span>
         </Link>
         <ul className="nav nav-pills">
           <li className="nav-item">
