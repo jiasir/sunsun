@@ -31,11 +31,11 @@ function Header(): JSX.Element {
                             Chat
                         </Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link href="/price" className={`nav-link ${activeLink === "/price" ? "active" : ""}`}>
                             Pricing
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                         <Link href="/faqs" className={`nav-link ${activeLink === "/faqs" ? "active" : ""}`}>
                             FAQs

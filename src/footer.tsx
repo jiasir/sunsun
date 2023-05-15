@@ -9,7 +9,7 @@ function Footer(): JSX.Element {
         <div className="container mt-auto">
             <footer className="py-3 my-4">
                 <ul className="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link href="/" className="nav-link px-2 text-body-secondary" aria-current="page">
                             Home
                         </Link>
@@ -33,7 +33,7 @@ function Footer(): JSX.Element {
                         <Link href="/about" className="nav-link px-2 text-body-secondary">
                             About
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
                 <div className="text-center text-body-secondary">
                     <p>© 2023 sunsun.dev</p>
