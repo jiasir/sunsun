@@ -31,12 +31,14 @@
     "react-eject": "react-scripts eject",
     "next-dev": "next dev",
     "next-build": "next build",
-    "next-start": "next start"
+    "next-start": "next start",
+    "next-lint": "next lint"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "next/core-web-vitals"
     ]
   },
   "browserslist": {
@@ -50,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.2"
   }
 }
