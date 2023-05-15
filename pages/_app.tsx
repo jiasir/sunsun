@@ -3,6 +3,9 @@ import Head from "next/head";
 import Header from "../src/header";
 import Footer from "../src/footer";
 import { useMediaQuery, ThemeProvider, createTheme } from "@mui/material";
+import { AppProps } from "next/app";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import i18n from "../src/i18n";
 
 // MyApp is a component that is used to initialize pages. You can override it and control the page initialization. This is useful for initializing page-wide providers, for example.
 function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
@@ -23,20 +26,22 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
   return (
     // ThemeProvider is a component that makes the theme available down the React tree thanks to React context.
     <ThemeProvider theme={theme}>
-      <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="sunsun" content="The sunsun website" />
-        <title>sunsun</title>
-      </Head>
+      <I18nextProvider i18n={i18n}>
+        <Head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#000000" />
+          <meta name="sunsun" content="The sunsun website" />
+          <title>sunsun</title>
+        </Head>
 
-      {/* col responsive global settings */}
-      <div className="d-flex flex-column min-vh-100">
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </div>
+        {/* col responsive global settings */}
+        <div className="d-flex flex-column min-vh-100">
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </div>
+      </I18nextProvider>
     </ThemeProvider>
   );
 }
