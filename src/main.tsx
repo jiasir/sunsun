@@ -1,9 +1,14 @@
 import React from 'react';
 
 function Main(): JSX.Element {
-    function handleClick() {
+    function handleClickChat() {
         // click this button will change the url to /chat
         window.location.href = "/chat";
+    }
+
+    function handleClickHelp() {
+        // click this button will change the url to /help
+        window.location.href = "/faqs";
     }
 
     return (
@@ -17,10 +22,10 @@ function Main(): JSX.Element {
                         sunsun-Chat is an AI chat assistant, chatGPT out of the box, no account and proxy required.
                     </p>
                     <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" className="btn btn-primary btn-lg px-4 gap-3" onClick={handleClick}>
+                        <button type="button" className="btn btn-primary btn-lg px-4 gap-3" onClick={handleClickChat}>
                             Chat Now
                         </button>
-                        <button type="button" className="btn btn-outline-secondary btn-lg px-4">
+                        <button type="button" className="btn btn-outline-secondary btn-lg px-4" onClick={handleClickHelp}>
                             Help
                         </button>
                     </div>
