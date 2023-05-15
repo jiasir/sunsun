@@ -1,26 +1,55 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap/dist/css/bootstrap.css";
+import * as React from "react";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
+import { Box } from "@mui/material";
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "left",
+  color: theme.palette.text.secondary,
+}));
 
 function Faqs(): JSX.Element {
-    return (
-        <main className="container">
-            <div className="px-4 py-5 my-5 text-center">
-                <img className="d-block mx-auto mb-4" src="/logo192.png" alt="" width="192"
-                    height="192"></img>
-                <h1 className="display-5 fw-bold text-body-emphasis">FAQs</h1>
-                <div className="col-lg-6 mx-auto">
-                    <p className="lead mb-4">Quickly design and customize responsive mobile-first sites with
-                        Bootstrap,
-                        the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                        responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-                    <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" className="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-                        <button type="button" className="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    );
+  return (
+    <main className="container">
+      <div className="px-4 py-5 my-5 text-center">
+        <img
+          className="d-block mx-auto mb-4"
+          src="/logo192.png"
+          alt=""
+          width="192"
+          height="192"
+        ></img>
+        <h1 className="display-5 fw-bold text-body-emphasis mx-auto mb-4">
+          FAQs
+        </h1>
+        <div>
+          <Box marginBottom={3}>
+            <Stack direction="row" spacing={1}>
+              <Item>Place Holder</Item>
+              <Item>
+                Place Holder Place Holder Place Holder Place Holder Place Holder
+                Place Holder Place Holder Place Holder Place Holder Place Holder
+              </Item>
+            </Stack>
+          </Box>
+          <Box marginBottom={3}>
+            <Stack direction="row" spacing={1}>
+              <Item>Place Holder</Item>
+              <Item>
+                Place Holder Place Holder Place Holder Place Holder Place Holder
+                Place Holder Place Holder Place Holder Place Holder Place Holder
+              </Item>
+            </Stack>
+          </Box>
+        </div>
+      </div>
+    </main>
+  );
 }
 
 export default Faqs;
