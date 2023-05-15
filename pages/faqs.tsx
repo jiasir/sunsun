@@ -17,13 +17,6 @@ function Faqs(): JSX.Element {
   return (
     <main className="container">
       <div className="px-4 py-5 my-5 text-center">
-        <img
-          className="d-block mx-auto mb-4"
-          src="/logo192.png"
-          alt=""
-          width="192"
-          height="192"
-        ></img>
         <h1 className="display-5 fw-bold text-body-emphasis mx-auto mb-4">
           FAQs
         </h1>
