@@ -1,0 +1,5 @@
+sunsun.dev {
+  root * /usr/share/caddy/public
+  try_files {path} {path}/ /index.html
+  encode gzip
+}
