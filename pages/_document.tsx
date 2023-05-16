@@ -12,7 +12,7 @@ class MyDocument extends Document {
                     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
                     <link rel="manifest" href="/manifest.json" />
-                    <script src="/theme.js"></script>
+                    <script src="/theme.js" async></script>
                 </Head>
                 <body>
                     <noscript>You need to enable JavaScript to run this app.</noscript>

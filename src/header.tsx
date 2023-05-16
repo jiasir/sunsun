@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Language } from "@mui/icons-material";
 import LanguageSwitcher from "./LanguageSwitcher";
+import Image from "next/image";
 
 function Header(): JSX.Element {
   const [activeLink, setActiveLink] = useState<string>("");
@@ -20,13 +21,11 @@ function Header(): JSX.Element {
           <svg className="bi me-2" width="40" height="32">
             <use xlinkHref="#bootstrap"></use>
           </svg>
-          <img
-            src="/apple-touch-icon.png"
-            alt="sunsun"
-            width="32"
-            height="32"
-            className={"me-2"}
-          />
+          <Image src="/apple-touch-icon.png"
+                 alt="sunsun"
+                 width="32"
+                 height="32"
+                 className={"me-2"}/>
           <span className="fs-3 font-monospace">sunsun</span>
         </Link>
         <ul className="nav nav-pills">
