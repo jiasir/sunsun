@@ -14,7 +14,7 @@
   "main": {
     "title": "sunsun-Chat",
     "subtitle": "A chatbot based on GPT",
-    "about_content": "sunsun-Chat is an AI chat assistant, chatGPT out of the box, no account and proxy required.",
+    "about_content": "sunsun-Chat is an AI chat assistant, ChatGPT out of the box, no account and proxy required.",
     "chat_now": "Chat Now",
     "help": "Help"
   },

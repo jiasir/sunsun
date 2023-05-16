@@ -14,7 +14,7 @@
   "main": {
     "title": "sunsun-Chat",
     "subtitle": "基于GPT的聊天机器人",
-    "about_content": "sunsun-Chat是一个AI聊天助手，内置chatGPT，无需账号和代理。",
+    "about_content": "sunsun-Chat是一个AI聊天助手，内置ChatGPT，无需账号和代理。",
     "chat_now": "立即聊天",
     "help": "帮助"
   },
