@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Button, Container, Typography} from "@mui/material";
+import {Box, Container, Typography} from "@mui/material";
 import {Trans, useTranslation} from "react-i18next";
 
 function About(): JSX.Element {
