@@ -21,6 +21,6 @@
   "about": {
     "title": "About sunsun-Chat",
     "subtitle": "A Chatbot Powered by GPT",
-    "content": "<p>Powered by ChatGPT and utilizing the GPT-3 model, sunsun-Chat generates articles through conversation. It offers an out-of-the-box experience without the need to apply for an account or configure networks. With just a click of a button, you can generate articles effortlessly.</p>\n<p>Currently leveraging the capabilities of GPT-3.5, sunsun-Chat is soon to be upgraded to GPT-4.</p>\n<p>This is the Chat-GPT you can use for free, built entirely on the foundation of the GPT model.</p>"
+    "content": "Powered by ChatGPT and utilizing the GPT-3 model, sunsun-Chat generates articles through conversation. It offers an out-of-the-box experience without the need to apply for an account or configure networks. With just a click of a button, you can generate articles effortlessly.\nCurrently leveraging the capabilities of GPT-3.5, sunsun-Chat is soon to be upgraded to GPT-4.\nThis is the Chat-GPT you can use for free, built entirely on the foundation of the GPT model."
   }
 }

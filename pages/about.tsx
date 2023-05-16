@@ -12,9 +12,7 @@ function About(): JSX.Element {
                     <Typography variant="h4" component="h1" sx={{mb: 4}}>
                         About
                     </Typography>
-                    <Typography variant="body1" sx={{mb: 4}}>
-                        <Trans i18nKey={"about.content"}>{t("about.content")}</Trans>
-                    </Typography>
+                    <Typography variant="body1" sx={{mb: 4}} dangerouslySetInnerHTML={{__html: t("about.content").replace(/\n/g, "<br>")}} />
                 </Container>
             </Box>
         </main>
