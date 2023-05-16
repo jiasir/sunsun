@@ -1,24 +1,30 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.css'
-import Image from "next/image";
+import {Box, Button, Container, Typography} from "@mui/material";
 
 function About(): JSX.Element {
     return (
-        <main className="container">
-            <div className="px-4 py-5 my-5 text-center">
-                <Image className={"d-block mx-auto mb-4"} src={"/logo192.png"} alt={""} width={192} height={192}/>
-                <h1 className="display-5 fw-bold text-body-emphasis">About</h1>
-                <div className="col-lg-6 mx-auto">
-                    <p className="lead mb-4">Quickly design and customize responsive mobile-first sites with
-                        Bootstrap,
-                        the world’s most popular front-end open source toolkit, featuring Sass variables and mixins,
-                        responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-                    <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" className="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-                        <button type="button" className="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-                    </div>
-                </div>
-            </div>
+        <main>
+            <Box sx={{py: 5, textAlign: "left"}}>
+                <Container maxWidth="md">
+                    <Typography variant="h4" component="h1" sx={{mb: 4}}>
+                        About
+                    </Typography>
+                    <Typography variant="body1" sx={{mb: 4}}>
+                        Quickly design and customize responsive mobile-first sites with MUI,
+                        a powerful UI component library that follows Material Design principles.
+                        It provides a wide range of prebuilt components and utilities to help
+                        you build beautiful and functional user interfaces efficiently.
+                    </Typography>
+                    <Box sx={{display: "flex", justifyContent: "center"}}>
+                        <Button variant="contained" color="primary" sx={{mr: 2}}>
+                            Primary Button
+                        </Button>
+                        <Button variant="outlined" color="secondary">
+                            Secondary Button
+                        </Button>
+                    </Box>
+                </Container>
+            </Box>
         </main>
     );
 }
