@@ -9,7 +9,7 @@ import reportWebVitals from '../src/reportWebVitals';
 export default function Index(): JSX.Element {
     return (
         <React.StrictMode>
-            <App />
+            <App/>
         </React.StrictMode>
     )
 }
