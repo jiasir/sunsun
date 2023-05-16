@@ -1,6 +1,12 @@
 {
-  "title": "这个是中文",
-  "placeholder1": "Placeholder 1",
-  "placeholder2": "Placeholder 2",
-  "button": "Change Language"
+  "free_q": "它是免费的吗？",
+  "free_a": "是的，每个人都可以免费使用。",
+  "accessible_q": "我可以在受限制的国家使用吗？",
+  "accessible_a": "是的，但您需要合法使用。请勿将其用于非法目的。",
+  "privacy_q": "使用它安全吗？",
+  "privacy_a": "是的，我们不存储任何数据、任何 cookie、任何分析和任何追踪器。",
+  "gpt_q": "什么是 GPT？",
+  "gpt_a": "GPT 是由 OpenAI 开发的语言模型。它是迄今为止最先进的语言模型之一。",
+  "sunsun_chat_q": "sunsun-Chat 与其他聊天机器人有何不同？",
+  "sunsun_chat_a": "sunsun-Chat 基于 GPT 模型开发，并且针对网络性能进行了优化，拥有更快速的访问体验和多端支持。"
 }

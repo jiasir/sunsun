@@ -23,23 +23,55 @@ function Faqs(): JSX.Element {
                 <h1 className="display-5 fw-bold text-body-emphasis mx-auto mb-4">
                     FAQs
                 </h1>
-                <Trans i18nKey="title">{t("title")}</Trans>
+                {/*<Trans i18nKey="title">{t("title")}</Trans>*/}
                 <div>
                     <Box marginBottom={3}>
                         <Stack direction="row" spacing={1}>
-                            <Item>Place Holder</Item>
                             <Item>
-                                Place Holder Place Holder Place Holder Place Holder Place Holder
-                                Place Holder Place Holder Place Holder Place Holder Place Holder
+                                <Trans i18nKey={"free_q"}>{t("free_q")}</Trans>
+                            </Item>
+                            <Item>
+                                <Trans i18nKey={"free_a"}>{t("free_a")}</Trans>
                             </Item>
                         </Stack>
                     </Box>
                     <Box marginBottom={3}>
                         <Stack direction="row" spacing={1}>
-                            <Item>Place Holder</Item>
                             <Item>
-                                Place Holder Place Holder Place Holder Place Holder Place Holder
-                                Place Holder Place Holder Place Holder Place Holder Place Holder
+                                <Trans i18nKey={"accessible_q"}>{t("accessible_q")}</Trans>
+                            </Item>
+                            <Item>
+                                <Trans i18nKey={"accessible_a"}>{t("accessible_a")}</Trans>
+                            </Item>
+                        </Stack>
+                    </Box>
+                    <Box marginBottom={3}>
+                        <Stack direction="row" spacing={1}>
+                            <Item>
+                                <Trans i18nKey={"privacy_q"}>{t("privacy_q")}</Trans>
+                            </Item>
+                            <Item>
+                                <Trans i18nKey={"privacy_a"}>{t("privacy_a")}</Trans>
+                            </Item>
+                        </Stack>
+                    </Box>
+                    <Box marginBottom={3}>
+                        <Stack direction="row" spacing={1}>
+                            <Item>
+                                <Trans i18nKey={"gpt_q"}>{t("gpt_q")}</Trans>
+                            </Item>
+                            <Item>
+                                <Trans i18nKey={"gpt_a"}>{t("gpt_a")}</Trans>
+                            </Item>
+                        </Stack>
+                    </Box>
+                    <Box marginBottom={3}>
+                        <Stack direction="row" spacing={1}>
+                            <Item>
+                                <Trans i18nKey={"sunsun_chat_q"}>{t("sunsun_chat_q")}</Trans>
+                            </Item>
+                            <Item>
+                                <Trans i18nKey={"sunsun_chat_a"}>{t("sunsun_chat_a")}</Trans>
                             </Item>
                         </Stack>
                     </Box>

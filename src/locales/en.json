@@ -1,6 +1,12 @@
 {
-  "title": "This is english",
-  "placeholder1": "Placeholder 1",
-  "placeholder2": "Placeholder 2",
-  "button": "Change Language"
+  "free_q": "Is it free?",
+  "free_a": "Yes, it is free for everyone to use.",
+  "accessible_q": "Can I use it in restricted countries?",
+  "accessible_a": "Yes, but you need to use it legally. Do not use it for illegal purposes.",
+  "privacy_q": "Is it safe to use?",
+  "privacy_a": "Yes, we do not store any data, cookies, analytics, or trackers.",
+  "gpt_q": "What is GPT?",
+  "gpt_a": "GPT is a language model developed by OpenAI. It is one of the most advanced language models to date.",
+  "sunsun_chat_q": "What sets sunsun-Chat apart from other chatbots?",
+  "sunsun_chat_a": "sunsun-Chat is developed based on the GPT model and optimized for network performance, providing faster access and multi-platform support."
 }
