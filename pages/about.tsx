@@ -1,7 +1,10 @@
 import React from "react";
 import {Box, Button, Container, Typography} from "@mui/material";
+import {Trans, useTranslation} from "react-i18next";
 
 function About(): JSX.Element {
+    const {t} = useTranslation();
+
     return (
         <main>
             <Box sx={{py: 5, textAlign: "left"}}>
@@ -10,19 +13,8 @@ function About(): JSX.Element {
                         About
                     </Typography>
                     <Typography variant="body1" sx={{mb: 4}}>
-                        Quickly design and customize responsive mobile-first sites with MUI,
-                        a powerful UI component library that follows Material Design principles.
-                        It provides a wide range of prebuilt components and utilities to help
-                        you build beautiful and functional user interfaces efficiently.
+                        <Trans i18nKey={"about.content"}>{t("about.content")}</Trans>
                     </Typography>
-                    <Box sx={{display: "flex", justifyContent: "center"}}>
-                        <Button variant="contained" color="primary" sx={{mr: 2}}>
-                            Primary Button
-                        </Button>
-                        <Button variant="outlined" color="secondary">
-                            Secondary Button
-                        </Button>
-                    </Box>
                 </Container>
             </Box>
         </main>
