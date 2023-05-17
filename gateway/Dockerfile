@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy gateway.py to the working directory
 COPY gateway.py .
 
-# Make port 4000 available to the world outside this container
+# Make port 3000 available to the world outside this container
 EXPOSE 3000
 
 # Set key
