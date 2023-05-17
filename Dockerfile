@@ -58,9 +58,9 @@ ENV PORT 3000
 
 CMD ["node", "server.js"]
 
-# Uncomment the following line in case you occur a build error for missing packages
+# The following build option in case you occur a build error for missing packages
 # --no-cache
 
-# Uncomment the following line in case you want to build for a specific platform. e.g. nextjs The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64/v3) and no specific platform was requested
+# The following build option in case you want to build for a specific platform. e.g. nextjs The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64/v3) and no specific platform was requested
 # --platform linux/arm64/v8
 # --platform linux/amd64/v3
