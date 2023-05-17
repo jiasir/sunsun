@@ -7,5 +7,10 @@ www.sunsun.dev {
 }
 
 api.sunsun.dev {
+    header {
+        Access-Control-Allow-Origin "https://sunsun.dev, https://www.sunsun.dev"
+        Access-Control-Allow-Methods "POST"
+        Access-Control-Allow-Headers "Content-Type"
+    }
     reverse_proxy gateway:3000
 }
