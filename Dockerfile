@@ -7,13 +7,8 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+COPY package.json package-lock.json ./
+RUN npm ci
 
 
 # Rebuild the source code only when needed
@@ -62,5 +57,5 @@ CMD ["node", "server.js"]
 # --no-cache
 
 # The following build option in case you want to build for a specific platform. e.g. nextjs The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64/v3) and no specific platform was requested
-# --platform linux/arm64/v8
-# --platform linux/amd64/v3
+# --platform linux/arm64, linux/amd64
+# see buildx.sh for more details
