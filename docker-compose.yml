@@ -5,7 +5,7 @@ services:
     image: jiasir/nextjs:latest
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "10086:3000"
 
   caddy:
     image: caddy:latest
