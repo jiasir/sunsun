@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY gateway.py .
 
 # Make port 4000 available to the world outside this container
-EXPOSE 4000
+EXPOSE 3000
 
 # Set key
 ENV OPENAI_API_KEY=$OPENAI_API_KEY
