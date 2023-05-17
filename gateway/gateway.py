@@ -31,10 +31,10 @@ Example response body:
 
 Caddy Usage:
 This is a demo for Caddy proxy port 3000 and 4000 with TLS. See: https://caddyserver.com/docs/quick-starts/reverse-proxy
-https://sunsun.dev {
+sunsun.dev {
    reverse_proxy localhost:3000
 }
-https://sunsun.dev/api {
+api.sunsun.dev {
     reverse_proxy localhost:4000
 }
 """

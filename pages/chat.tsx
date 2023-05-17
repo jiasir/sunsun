@@ -31,7 +31,7 @@ function Chat(): JSX.Element {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
-    const [gateway] = useState("https://api.sunsun.dev:3000/v1/chat/completions");
+    const [gateway] = useState("https://api.sunsun.dev/v1/chat/completions");
 
     const handleMessageSend = async () => {
         if (input.trim() !== "") {

@@ -8,6 +8,13 @@ services:
     ports:
       - "10086:3000"
 
+  gateway:
+    container_name: gateway
+    image: jiasir/gateway:latest
+    restart: unless-stopped
+    ports:
+      - "10010:4000"
+
   caddy:
     container_name: caddy
     image: caddy:latest

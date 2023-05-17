@@ -12,6 +12,7 @@
 
 # Build the image and push
 docker buildx build --platform linux/amd64,linux/arm64 -t jiasir/nextjs:latest --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t jiasir/gateway:latest --push .
 
 # Push the image
 # docker buildx push jiasir/nextjs:latest
