@@ -1,5 +1,3 @@
-sunsun.dev {
-  root * /usr/share/caddy/public
-  try_files {path} {path}/ /index.html
-  encode gzip
+https://sunsun.dev {
+   reverse_proxy nextjs:3000
 }
