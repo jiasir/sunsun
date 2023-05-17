@@ -30,12 +30,12 @@ Example response body:
 }
 
 Caddy Usage:
-This is a demo for Caddy proxy port 3000 and 4000 with TLS. See: https://caddyserver.com/docs/quick-starts/reverse-proxy
+This is a demo for Caddy proxy port 3000 with TLS. See: https://caddyserver.com/docs/quick-starts/reverse-proxy
 sunsun.dev {
-   reverse_proxy localhost:3000
+   reverse_proxy <container_name>:3000
 }
 api.sunsun.dev {
-    reverse_proxy localhost:4000
+    reverse_proxy <container_name>:3000
 }
 """
 
@@ -47,7 +47,7 @@ import logging
 from quart.logging import default_handler
 
 app = Quart(__name__)
-app = cors(app, allow_origin="*")  # Enable CORS for all origins
+# app = cors(app, allow_origin="https://sunsun.dev")
 
 # Setup logging
 app.logger.removeHandler(default_handler)  # Remove default logging handler
@@ -67,14 +67,14 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 # Define a route to handle client requests
 @app.route('/v1/chat/completions', methods=['POST', 'OPTIONS'])
 async def get_chat_completions():
-    if request.method == 'OPTIONS':
-        # Handle CORS preflight request
-        headers = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST',
-            'Access-Control-Allow-Headers': 'Content-Type'
-        }
-        return '', 204, headers
+#     if request.method == 'OPTIONS':
+#         # Handle CORS preflight request
+#         headers = {
+#             'Access-Control-Allow-Origin': 'https://sunsun.dev',
+#             'Access-Control-Allow-Methods': 'POST',
+#             'Access-Control-Allow-Headers': 'Content-Type'
+#         }
+#         return '', 204, headers
     try:
         # Get the request data from the client
         data = await request.get_json()
@@ -93,4 +93,6 @@ async def get_chat_completions():
 
 # Start the Quart server
 if __name__ == '__main__':
-    app.run(debug=True, port=4000)
+    app.run(debug=True, host="0.0.0.0", port=3000)
+
+# TODO dockerized gateway and CORS issue
