@@ -93,6 +93,6 @@ async def get_chat_completions():
 
 # Start the Quart server
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=3000)
+    app.run(debug=True, host="gateway", port=3000)
 
 # TODO dockerized gateway and CORS issue
