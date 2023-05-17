@@ -1,22 +1,20 @@
-FROM python:3.11
+# Use the official Node.js image as the base
+FROM node:18-alpine
 
-# Set the working directory to /app
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy requirements.txt to the working directory
-COPY requirements.txt .
+# Install dependencies
+RUN npm install express axios cors
 
-# Install deps
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the source code to the working directory
+COPY ./gateway.js .
 
-# Copy gateway.py to the working directory
-COPY gateway.py .
-
-# Make port 3000 available to the world outside this container
+# Expose the port specified in the code (3000)
 EXPOSE 3000
 
 # Set key
 ENV OPENAI_API_KEY=$OPENAI_API_KEY
 
-# Run gateway.py when the container launches
-CMD ["python", "gateway.py"]
+# Run the command to start the server
+CMD ["node", "gateway.js"]
