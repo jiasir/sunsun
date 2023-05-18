@@ -3,12 +3,12 @@ sunsun.dev {
 }
 
 www.sunsun.dev {
-    reverse_proxy nextjs:3000
+    redir https://sunsun.dev{uri}
 }
 
 api.sunsun.dev {
     header {
-        Access-Control-Allow-Origin "https://sunsun.dev, https://www.sunsun.dev"
+        Access-Control-Allow-Origin "https://sunsun.dev"
         Access-Control-Allow-Methods "POST"
         Access-Control-Allow-Headers "Content-Type"
     }
