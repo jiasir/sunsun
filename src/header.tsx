@@ -16,14 +16,11 @@ function Header(): JSX.Element {
                     href="/"
                     className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
                 >
-                    <svg className="bi me-2" width="40" height="32">
-                        <use xlinkHref="#bootstrap"></use>
-                    </svg>
                     <Image src="/apple-touch-icon.png"
                            alt="sunsun"
                            width="32"
                            height="32"
-                           className={"me-2"}/>
+                           className={"bi me-2"}/>
                     <span className="fs-3 font-monospace">sunsun</span>
                 </Link>
                 <ul className="nav nav-pills">
