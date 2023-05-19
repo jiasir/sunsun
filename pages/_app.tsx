@@ -32,7 +32,7 @@ function MyApp({Component, pageProps}: { Component: any; pageProps: any }) {
                     <meta charSet="utf-8"/>
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <meta name="theme-color" content="#000000"/>
-                    <meta name="sunsun" content="The sunsun website"/>
+                    <meta name="sunsun" content="sunsun-Chat is an AI chat assistant, ChatGPT out of the box, no account and proxy required."/>
                     <title>sunsun</title>
                 </Head>
 
