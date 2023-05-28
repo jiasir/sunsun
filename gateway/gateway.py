@@ -67,14 +67,14 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 # Define a route to handle client requests
 @app.route('/v1/chat/completions', methods=['POST', 'OPTIONS'])
 async def get_chat_completions():
-#     if request.method == 'OPTIONS':
-#         # Handle CORS preflight request
-#         headers = {
-#             'Access-Control-Allow-Origin': 'https://sunsun.dev',
-#             'Access-Control-Allow-Methods': 'POST',
-#             'Access-Control-Allow-Headers': 'Content-Type'
-#         }
-#         return '', 204, headers
+    #     if request.method == 'OPTIONS':
+    #         # Handle CORS preflight request
+    #         headers = {
+    #             'Access-Control-Allow-Origin': 'https://sunsun.dev',
+    #             'Access-Control-Allow-Methods': 'POST',
+    #             'Access-Control-Allow-Headers': 'Content-Type'
+    #         }
+    #         return '', 204, headers
     try:
         # Get the request data from the client
         data = await request.get_json()
