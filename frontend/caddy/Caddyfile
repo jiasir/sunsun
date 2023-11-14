@@ -7,10 +7,5 @@ www.sunsun.dev {
 }
 
 gateway.sunsun.dev {
-    header {
-        Access-Control-Allow-Origin "https://sunsun.dev"
-        Access-Control-Allow-Methods "POST"
-        Access-Control-Allow-Headers "Content-Type"
-    }
     reverse_proxy localhost:8080
 }
