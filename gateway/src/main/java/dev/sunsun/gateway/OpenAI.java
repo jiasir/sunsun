@@ -15,23 +15,25 @@ import org.springframework.http.*;
 public class OpenAI {
 
     // gpt-4 (and gpt-4 turbo), gpt-3.5-turbo
-    private static final String OPENAI_API_URL = "\thttps://api.openai.com/v1/chat/completions";
+    // private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+        private static final String OPENAI_API_URL = "https://model.aigcbest.top/v1/chat/completions";
+
 
     /**
      * Sends a message to OpenAI API and returns the response as a String.
      *
-     * @param message the message to send to the OpenAI API
+     * @param message the message is a JSON to send to the OpenAI API
      * @return the response from the OpenAI API as a String
      */
     @PostMapping("/openai")
-    public String getOpenAiResponse(@RequestBody String message) {
+    public String getOpenAiResponse(@RequestBody Model message) {
         RestTemplate restTemplate = new RestTemplate();
-        String requestBody = "{\"prompt\": \"" + message + "\", \"max_tokens\": 60}";
+        Model requestBody = new Model("gpt-4", message.messages());
         String authorizationHeader = "Bearer " + System.getenv("OPENAI_API_KEY");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", authorizationHeader);
-        HttpEntity<String> request = new HttpEntity<>(requestBody, headers);
+        HttpEntity<Model> request = new HttpEntity<>(requestBody, headers);
         ResponseEntity<String> response = restTemplate.postForEntity(OPENAI_API_URL, request, String.class);
         return response.getBody();
     }
