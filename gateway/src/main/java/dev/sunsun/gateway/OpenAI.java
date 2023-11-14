@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class OpenAI {
 
     // gpt-4 (and gpt-4 turbo), gpt-3.5-turbo
