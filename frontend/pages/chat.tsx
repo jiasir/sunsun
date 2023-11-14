@@ -31,7 +31,7 @@ function Chat(): JSX.Element {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
-    const [gateway] = useState("https://api.sunsun.dev/v1/chat/completions");
+    const [gateway] = useState("https://gateway.sunsun.dev/openai");
 
     const handleMessageSend = async () => {
         if (input.trim() !== "") {
@@ -48,7 +48,7 @@ function Chat(): JSX.Element {
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({
                         temperature: 0.8,
-                        model: "gpt-3.5-turbo",
+                        model: "gpt-4",
                         messages: [...messages, newMessage],
                     }),
                 });
