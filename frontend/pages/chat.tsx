@@ -1,3 +1,6 @@
+/**
+ * A component that allows the user to chat with an AI assistant using OpenAI's GPT-4 model.
+ */
 import React, {useEffect, useRef, useState} from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
