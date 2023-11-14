@@ -1,17 +1,28 @@
-package dev.sunsun.gw;
+/**
+ * This class represents a REST controller that handles requests to the OpenAI API.
+ * The API key is retrieved from the system environment variable "OPENAI_API_KEY".
+ * The "getOpenAiResponse" method sends a POST request to the OpenAI API with a prompt message and returns the response.
+ */
+package dev.sunsun.gateway;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.*;
 
 
 @RestController
-public class OpenAiController {
+public class OpenAI {
 
-    private static final String OPENAI_API_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
+    // gpt-4 (and gpt-4 turbo), gpt-3.5-turbo
+    private static final String OPENAI_API_URL = "\thttps://api.openai.com/v1/chat/completions";
 
+    /**
+     * Sends a message to OpenAI API and returns the response as a String.
+     *
+     * @param message the message to send to the OpenAI API
+     * @return the response from the OpenAI API as a String
+     */
     @PostMapping("/openai")
     public String getOpenAiResponse(@RequestBody String message) {
         RestTemplate restTemplate = new RestTemplate();
