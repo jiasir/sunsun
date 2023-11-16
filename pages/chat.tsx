@@ -31,9 +31,16 @@ function Chat(): JSX.Element {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
-    const [gateway] = useState("https://api.sunsun.dev/v1/chat/completions");
+    const [gateway] = useState("https://gateway.sunsun.dev/openai");
 
-    const handleMessageSend = async () => {
+    /**
+     * Handles sending a message to the chatbot.
+     *
+     * @async
+     * @function handleMessageSend
+     * @returns {Promise<void>} - A promise that resolves when the message has been sent.
+     */
+    const handleMessageSend = async (): Promise<void> => {
         if (input.trim() !== "") {
             const newMessage: Message = {
                 role: "user",
